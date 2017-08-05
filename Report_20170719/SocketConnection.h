@@ -5,7 +5,8 @@
 
 #include<WinSock2.h>
 
-enum SystemType { None, Server, Client };
+//SystemType::Noneにしたいが、Reversi.hで再定義エラーが出るので変える
+enum SystemType { Other, Server, Client };
 
 class SocketConnection
 {
@@ -14,7 +15,7 @@ public:
 	~SocketConnection();
 
 private:
-	SystemType systemType = SystemType::None;
+	SystemType systemType = SystemType::Other;
 
 	WSADATA wsaData;
 	int result;
