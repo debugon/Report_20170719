@@ -10,6 +10,8 @@ enum SystemType { None, Server, Client };
 class SocketConnection
 {
 public:
+	SocketConnection();
+	~SocketConnection();
 
 private:
 	SystemType systemType = SystemType::None;

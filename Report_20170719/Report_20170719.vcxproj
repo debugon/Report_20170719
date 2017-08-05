@@ -141,6 +141,7 @@
   <ItemGroup>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Reversi.cpp" />
+    <ClCompile Include="SocketConnection.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Reversi.h" />

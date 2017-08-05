@@ -1,11 +1,10 @@
 #ifndef REVERSIH
 #define REVERSIH
 
-#define	SERVER_PORT 55555
-
 #include<iostream>
 #include<vector>
-#include<WinSock2.h>
+
+#include"SocketConnection.h"
 
 enum StoneFlag { None, Black, White };
 

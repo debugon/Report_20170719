@@ -9,13 +9,3 @@ ReversiEngine::~ReversiEngine()
 {
 
 }
-
-void ReversiEngine::InitServer()
-{
-
-}
-
-void ReversiEngine::InitClient()
-{
-
-}
