@@ -3,6 +3,7 @@
 
 #define SERVER_PORT 50622
 
+#include<iostream>
 #include<WinSock2.h>
 
 //SystemType::Noneにしたいが、Reversi.hで再定義エラーが出るので変える
@@ -17,16 +18,11 @@ public:
 private:
 	SystemType systemType = SystemType::Other;
 
-	WSADATA wsaData;
 	int result;
-
-	SOCKET listenSoc, soc;
-	SOCKADDR_IN saddr, from;
-	int fromlen, rcv;
 	char buffer[1000];
 	const unsigned short port = SERVER_PORT;
 
-	void InitServer();
-	void InitClient();
+	int InitServer(unsigned short port, SOCKET* soc);
+	int InitClient();
 };
 #endif // !SOCKETCONNECTIONH
