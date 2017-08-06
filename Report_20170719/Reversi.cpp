@@ -45,8 +45,8 @@ void ReversiEngine::PrintGameBoard()
 			std::cout << "„ ";
 		}
 
-		if (i == StoneFlag::Black) std::cout << "œ:PLAYER";
-		if (i == StoneFlag::White) std::cout << "›:COMPUTER";
+		if (i == StoneFlag::Black) std::cout << "œ:PLAYER_1";
+		if (i == StoneFlag::White) std::cout << "›:PLAYER_2";
 		std::cout << std::endl;
 	}
 	std::cout << "„Ÿ„¨„Ÿ„¨„Ÿ„¨„Ÿ„¨„Ÿ„¨„Ÿ„¨„Ÿ„¨„Ÿ„¨„Ÿ„£" << std::endl;
