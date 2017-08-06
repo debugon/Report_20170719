@@ -4,6 +4,7 @@
 #define SERVER_PORT 50622
 
 #include<iostream>
+#include<string>
 #include<WinSock2.h>
 
 //SystemType::Noneにしたいが、Reversi.hで再定義エラーが出るので変える
@@ -23,6 +24,6 @@ private:
 	const unsigned short port = SERVER_PORT;
 
 	int InitServer(unsigned short port, SOCKET* soc);
-	int InitClient();
+	int InitClient(std::string server, unsigned short port, SOCKET* soc);
 };
 #endif // !SOCKETCONNECTIONH

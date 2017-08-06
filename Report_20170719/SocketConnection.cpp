@@ -62,14 +62,57 @@ int SocketConnection::InitServer(unsigned short port, SOCKET* soc)
 		return -1;
 	}
 	else {
-		std::cout << inet_ntoa(from.sin_addr) << " is Connected." << std::endl;
+		std::cout << inet_ntoa(from.sin_addr) << " Connected." << std::endl;
 	}
 	closesocket(listenSoc);
 
 	return 0;
 }
 
-int SocketConnection::InitClient()
+int SocketConnection::InitClient(std::string server, unsigned short port, SOCKET* soc)
 {
+	WSADATA wsaData;
+	HOSTENT* host;
+	unsigned int addr;
+	SOCKADDR_IN saddr;
+	int ret;
 
+	ret = WSAStartup(MAKEWORD(1, 1), &wsaData);
+	if (ret) {
+		std::cout << "Soket Error!" << std::endl;
+		return -1;
+	}
+
+	*soc = socket(AF_INET, SOCK_STREAM, 0);
+	if (*soc < 0) {
+		std::cout << "Socket Open Error!" << std::endl:
+		WSACleanup();
+		return -1;
+	}
+
+	host = gethostbyname(server.c_str());
+	if (!host) {
+		addr = inet_addr(server.c_str());
+		host = gethostbyaddr((char *)&addr, 4, AF_INET);
+	}
+	if (!host) {
+		std::cout << "Host Name Error!" << std::endl;
+		closesocket(*soc);
+		WSACleanup();
+		return -1;
+	}
+
+	ZeroMemory(&saddr, sizeof(SOCKADDR_IN));
+	saddr.sin_family = host->h_addrtype;
+	saddr.sin_port = htons(port);
+	saddr.sin_addr.s_addr = *((u_long *)host->h_addr);
+
+	if (connect(*soc, (SOCKADDR *)&saddr, sizeof(saddr)) == SOCKET_ERROR) {
+		std::cout << "Connection Error!" << std::endl;
+		closesocket(*soc);
+		WSACleanup();
+		return -1;
+	}
+
+	return 0;
 }
