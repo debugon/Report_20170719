@@ -85,7 +85,7 @@ int SocketConnection::InitClient(std::string server, unsigned short port, SOCKET
 
 	*soc = socket(AF_INET, SOCK_STREAM, 0);
 	if (*soc < 0) {
-		std::cout << "Socket Open Error!" << std::endl:
+		std::cout << "Socket Open Error!" << std::endl;
 		WSACleanup();
 		return -1;
 	}

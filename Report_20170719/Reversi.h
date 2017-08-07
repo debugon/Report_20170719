@@ -21,9 +21,14 @@ public:
 
 	bool isCheckReverse(int x, int y);
 
+	SystemType GetConnectionType() { return socketConnection.GetSystemType(); }
+	void SetConnectionType(SystemType inputType) { socketConnection.SetSystemType(inputType); }
+
 private:
 	const int NUMBER_OF_SQUARE = 8;
 	std::vector<std::vector <StoneFlag> > gameBoard;
+
+	SocketConnection socketConnection;
 
 };
 

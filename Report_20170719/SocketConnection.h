@@ -1,6 +1,7 @@
 #ifndef SOCKETCONNECTIONH
 #define SOCKETCONNECTIONH
 
+#define _WINSOCK_DEPRECATED_NO_WARNINGS
 #define SERVER_PORT 50622
 
 #include<iostream>
@@ -16,12 +17,16 @@ public:
 	SocketConnection();
 	~SocketConnection();
 
+	SystemType GetSystemType() { return systemType; }
+	void SetSystemType(SystemType inputType) { systemType = inputType; }
+
 private:
 	SystemType systemType = SystemType::Other;
 
-	int result;
-	char buffer[1000];
 	const unsigned short port = SERVER_PORT;
+	SOCKET soc;
+	int rcv;
+	std::string server;
 
 	int InitServer(unsigned short port, SOCKET* soc);
 	int InitClient(std::string server, unsigned short port, SOCKET* soc);
